@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latex Quiz Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Quiz<span>Gen</span></h1>
+            <p>Paste your questions and start learning instantly.</p>
+        </header>
+
+        <main id="setup-view" class="view active">
+            <div class="input-group">
+                <label for="quiz-input" style="margin-bottom: 0.5rem; display: block; font-weight: 600;">Paste Template Content:</label>
+                <textarea id="quiz-input" placeholder="\begin{questions}&#10;&#10;\question What is jitter in computer networks?&#10;\begin{choices}&#10;\choice Delay in packet delivery&#10;\choice Variation in packet delay&#10;\choice Packet loss&#10;\choice Data rate&#10;\end{choices}&#10;\CorrectChoice Variation in packet delay&#10;&#10;\end{questions}"></textarea>
+            </div>
+            <button id="start-btn" class="primary-btn">Generate Quiz ✨</button>
+            <div id="error-message" class="error hidden">Could not parse questions. Please check the format.</div>
+        </main>
+
+        <main id="quiz-view" class="view hidden">
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+                <span id="progress-text">Question 1 of 10</span>
+            </div>
+            <div class="question-card">
+                <h2 id="question-text">Question goes here...</h2>
+                <div class="choices" id="choices-container">
+                    <!-- Choices will be injected here -->
+                </div>
+            </div>
+            <div class="actions hidden" id="quiz-actions" style="margin-top: 1.5rem;">
+                <button id="next-btn" class="secondary-btn">Next Question ➔</button>
+            </div>
+        </main>
+
+        <main id="results-view" class="view hidden">
+            <div class="results-card">
+                <h2>Quiz Complete! 🎉</h2>
+                <div class="score-display">
+                    <span id="score-text">0/0</span>
+                </div>
+                <p id="score-message">Great job!</p>
+                <div class="results-actions">
+                    <button id="restart-btn" class="primary-btn">Try Again</button>
+                    <button id="new-quiz-btn" class="secondary-btn">New Quiz</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
